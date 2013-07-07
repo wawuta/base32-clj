@@ -42,4 +42,8 @@
 
 (defn encode-bytes
   ^"[B"
-  )
+  [^"[B" data]
+  (let [len (int (count data))
+        cap (int (encode-result-size len))
+        b (ByteBuffer/allocate cap)]
+    ))
