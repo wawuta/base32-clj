@@ -1,3 +1,0 @@
-(ns ^{:doc "Alphabets for Base32 Enoding/Decoding."
-      :author "wang wu tao"}
-  base32-clj.alphabet)
