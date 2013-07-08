@@ -5,14 +5,14 @@
         base32-clj.utils)
   (:import java.nio.ByteBuffer))
 
-(set! *unhecked-math* true)
+(set! *unchecked-math* true)
 (set! *warn-on-reflection* true)
 
 ;; ## Encoding
 
 (defmacro write-base32
   [b o0 o1 o2 o3 o4]
-  (let [v (getsym "v")]
+  (let [v (gensym "v")]
     `(let [~v (long
                (bit-or
                 (<< (->int ~o0) 32)
@@ -46,4 +46,18 @@
   (let [len (int (count data))
         cap (int (encode-result-size len))
         b (ByteBuffer/allocate cap)]
-    ))
+    (loop [i (int 0)]
+      (if (< i len)
+        (let [next-i (+ i (int 5))
+              n (if (<= next-i len) (int 5) (unchecked-remainder-int (unchecked-subtract-int len i) (int 5)))]
+          (write-octets b data i n)
+          (recur next-i))
+        (.array b)))))
+
+
+(defn encode
+  "Encode the given String to its UTF-8 Base32 Representataion."
+  ([^String s] (encode s "UTF-8"))
+  ([^String s ^String encoding]
+     (let [data (encode-bytes (.getBytes s encoding))]
+       (String. data "UFT-8"))))

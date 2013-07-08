@@ -2,7 +2,7 @@
       :author "wang wutao"}
   base32-clj.utils)
 
-(set! *unhecked-math* true)
+(set! *unchecked-math* true)
 
 ;; ## Constants
 (def ^:const FIVE_MASK (int 0x1F))
@@ -20,10 +20,12 @@
 ;; ## Length Calculation
 
 (defmacro encode-result-size
+  "Given the length of an UTF-8 byte array, compute the size of the Base32 result array."
   [n]
-  `(int (* (/ (- (+ ~n 2) (mod (+ ~n 2) 3)) 3) 4)))
+  `(int (* (/ (- (+ ~n 4) (mod (+ ~n 4) 5)) 5) 8)))
 
 (defmacro decode-result-size
+   "Given the length of a Base32-encoded UTF-8 byte array, compute the maximum size of the decoding result array."
   [n]
   `(int (/ (* ~n 5) 8)))
 
