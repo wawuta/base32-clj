@@ -11,11 +11,11 @@
 ;; ## Shorthands
 (defmacro <<
   [x n]
-  `(int (bit-shift-left (int ~x) (int ~n))))
+  `(long (bit-shift-left (long ~x) (long ~n))))
 
 (defmacro >>
   [x n]
-  `(int (bit-shift-right (int ~x) (int ~n))))
+  `(long (bit-shift-right (long ~x) (long ~n))))
 
 ;; ## Length Calculation
 

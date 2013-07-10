@@ -1,5 +1,5 @@
 (ns ^{:doc "Alphabets for Base32 Enoding/Decoding."
-      :author "wang wu tao"}
+      :author "wang wutao"}
   base32-clj.alphabet)
 
 ;; ## Alphabet
@@ -35,4 +35,4 @@
 (defmacro base32-byte->int
   "Convert Base32 charater to 5-bit integer."
   [c]
-  `(get BASE32_DECODE ~c))
+  `(get BASE32_DECODE (int ~c)))

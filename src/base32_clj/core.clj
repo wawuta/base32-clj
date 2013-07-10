@@ -1,5 +1,5 @@
 (ns ^{:doc "Base32 Encoding/Deonding in Clojure."
-      :author "wang wu tao"}
+      :author "wang wutao"}
   base32-clj.core
   (:use base32-clj.alphabet
         base32-clj.utils)
@@ -60,4 +60,4 @@
   ([^String s] (encode s "UTF-8"))
   ([^String s ^String encoding]
      (let [data (encode-bytes (.getBytes s encoding))]
-       (String. data "UFT-8"))))
+       (String. data "UTF-8"))))
