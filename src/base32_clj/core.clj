@@ -137,5 +137,3 @@
   ([^String s ^String encoding]
     (let [data (decode-bytes (.getBytes s "UTF-8"))]
       (String. data encoding))))
-
-(decode "MY======")

@@ -1,4 +1,4 @@
-(defproject base32-clj "0.1.0-SNAPSHOT"
+(defproject base32-clj "0.1.0"
   :description "Base32 Enoding/Deconding in Clojure"
   :url "http://github.com/wawuta/base32-clj"
   :license {:name "Eclipse Public License"
